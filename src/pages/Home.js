@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { products } from "../services";
 
 const Home = () => {
-    return(
-        <div>Hola mundoooo</div>
+
+    const [productos, setProductos] = useState([])
+
+    useEffect(() => {
+        products(setProductos)
+    }, [])
+
+    return (
+        <div>
+            {productos?.map((pro) => (
+            <div key={pro.id}>
+                 <div>{pro.id}</div>
+            </div>
+            ))}
+        </div>
     )
 }
 
